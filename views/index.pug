@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to pug by shital nasam#{title}
+  button(type="button",class="btn-btn-success",onclick="update()") PRESS ME
+  div(id = "target") text of Display
+  a(href='/house') Link to house page 
+  
+  script. 
+    var client_count=0;
+     function update() {
+       client_count++;
+        document.getElementById("target").innerHTML=`Value now ${client_count}`;
+     }

@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to pug by shital nasam#{title}
+  div(class="container-fluid")
+        div(class="row")
+            -
+                let house = [
+                    {
+                        "type": "1BHK",
+                        "colour": "white",
+                        "rent": 600
+                    },
+                    {
+                        "type": "2BHK",
+                        "colour": "brown",
+                        "rent": 500
+                    },
+                    {
+                        "type": "duplex",
+                        "colour": "grey",
+                        "rent": 1000
+                    },                    
+                ]
+            each list,index in house
+                div(class="col-sm-2" onclick=`buy(${index})`) #{list.type}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{list.colour}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{list.rent}
+                 
+        script.
+     
+             function buy(itemNo)
+             {
+             alert(`You purchased Item ${itemNo+1}`)
+             }
