@@ -41,3 +41,24 @@ exports.house_view_all_Page = async function(req, res) {
     res.error(500,`{"error": ${err}}`);
     }
     };
+
+    // Handle house create on POST.
+exports.house_create_post = async function(req, res) {
+    console.log(req.body)
+    let document = new house();
+    // We are looking for a body, since POST does not have query parameters.
+    // Even though bodies can be in many different formats, we will be picky
+    // and require that it be a json object
+    // {"costumetype":"goat", "cost":12, "size":"large"}
+    document.type = req.body.type;
+    document.colour = req.body.colour;
+    document.rent = req.body.rent;
+    try{
+    let result = await document.save();
+    res.send(result);
+    }
+    catch(err){
+    res.error(500,`{"error": ${err}}`);
+    }
+    };
+    
