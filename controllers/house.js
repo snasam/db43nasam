@@ -1,8 +1,18 @@
 var house = require('../models/house');
 // List of all house
-exports.house_list = function(req, res) {
+
+exports.house_list = async function(req, res) {
+    try{
+        thehouse = await house.find();
+        res.send(thehouse);
+        }
+        catch(err){
+        res.error(500,`{"error": ${err}}`);
+        }
+        
 res.send('NOT IMPLEMENTED: house list');
 };
+
 // for a specific house.
 exports.house_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: house detail: ' + req.params.id);

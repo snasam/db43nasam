@@ -32,15 +32,15 @@ async function recreateDB() {
   await house.deleteMany();
   let instance1 = new house({
     type: "1BHK", colour: "white",
-    cost: 220
+    rent: 220
   });
   let instance2 = new house({
     type: "2BHK", colour: "grey",
-    cost: 300
+    rent: 300
   });
   let instance3 = new house({
     type: "3BHK", colour: "brown",
-    cost: 500
+    rent: 500
   });
   instance1.save(function (err, doc) {
     if (err) return console.error(err);
