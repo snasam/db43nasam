@@ -14,7 +14,16 @@ res.send('NOT IMPLEMENTED: house list');
 };
 
 // for a specific house.
-exports.house_detail = function(req, res) {
+exports.house_detail = async function(req, res) {
+        console.log("detail"  + req.params.id)
+        try {
+            result = await house.findById( req.params.id)
+            res.send(result)
+        } catch (error) {
+            res.status(500)
+            res.send(`{"error": document for id ${req.params.id} not found`);
+        }
+    
 res.send('NOT IMPLEMENTED: house detail: ' + req.params.id);
 };
 // Handle house create on POST.
@@ -26,7 +35,22 @@ exports.house_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: house delete DELETE ' + req.params.id);
 };
 // Handle house update form on PUT.
-exports.house_update_put = function(req, res) {
+exports.house_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await house.findById( req.params.id)
+        // Do updates of properties
+        if(req.body.type) toUpdate.type = req.body.type;
+        if(req.body.colour) toUpdate.colour = req.body.colour;
+        if(req.body.rent) toUpdate.rent = req.body.rent;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
+
 res.send('NOT IMPLEMENTED: house update PUT' + req.params.id);
 };
 
