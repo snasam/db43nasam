@@ -1,0 +1,43 @@
+extends layout
+
+block content
+    h1= title
+
+    - let houseid = toShow._id
+    - let housetype = toShow.type
+    - let housecolour = toShow.colour
+    - let houserent = toShow.rent
+
+    div
+        div.row
+            div(class='costumeAttr mr-3') house ID is:
+            div(id="houseid") #{houseid}
+        div.row
+            div(class='costumeAttr mr-3') house Type is:
+            div #{housetype}
+        div.row
+            div(class='costumeAttr mr-3') house colour is:
+            div #{housecolour}
+        div.row
+            div(class='costumeAttr mr-3') house rent is:
+            div #{houserent}
+        div.row
+            button(class='btn btn-danger btn-md m-auto'  type="Submit" onclick=`deletehouse()`) Delete
+
+    script.
+        function deletehouse() {
+            let value=document.getElementById("houseid").innerHTML;
+            console.log(value)
+            // TODO do something here to show user that form is being submitted
+            fetch('/resource/house/' + value, {
+                method: 'DELETE'
+            }).then((resp) => {
+                return resp.json(); // or resp.text() or whatever the server sends
+            }).then((body) => {
+                alert("Delete succeded")
+                 // TODO handle body
+            }).catch((error) => {
+                // TODO handle error
+                alert("Delete failed " + error )
+            });
+        };
