@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1= title
+
+  form(id='houseForm', action="/resource/house", method="POST")
+    div.form-group
+        label.costumeAttr(for='type') house Type
+        input#costumetype(type='text', name='type')
+    div.form-group
+        label.costumeAttr(for='colour') house colour
+        input#size(type='text', name='colour')
+    div.form-group
+        label.costumeAttr(for='rent') house rent
+        input#cost(type='text', name='rent')
+    input(type="submit")
+
+  script.
+    document.forms['houseForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error )
+      });
+    });
