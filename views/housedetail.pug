@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1= title
+
+  - let houseid = toShow._id
+  - let housetype = toShow.type
+  - let housecolour = toShow.colour
+  - let houserent = toShow.rent
+
+  div
+    div.row
+      div(class='costumeAttr mr-3') house ID is:
+      div #{houseid}
+    div.row
+      div(class='costumeAttr mr-3') house Type is:
+      div #{housetype}
+    div.row
+      div(class='costumeAttr mr-3') house colour is:
+      div #{housecolour}
+    div.row
+      div(class='costumeAttr mr-3') house rent is:
+      div #{houserent}
