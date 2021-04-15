@@ -2,6 +2,8 @@ extends layout
 
 block content
     h1= title
+    if (toShow == null)
+      h2 No instance to delete
 
     - let houseid = toShow._id
     - let housetype = toShow.type

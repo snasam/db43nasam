@@ -10,4 +10,35 @@ a {
 .costumeAttr {
   background-color: aquamarine;
   width: 120px;
+  text-align: center;
+  color: rgb(185, 18, 62);
+  padding: 9px;
+  border-radius: 10px;
+  
+}
+
+.Attr {
+  width: 180px;
+  margin: 5px;
+  text-align: center;
+  padding: 9px;
+  border-radius: 6px;
+  font-weight: bolder;
+
+}
+
+.values{
+  margin-right: 3px;
+  margin-bottom: 0;
+  padding: 9px;
+  justify-content:center;
+  font-weight: bold;
+  border-bottom: 2px solid rgb(19, 224, 121);
+  border-left: 2px solid  rgb(36, 224, 19);
+  background-color: rgb(11, 102, 102);
+
+}
+.specialstyles{
+    border-top: 2px solid rgb(0, 119, 255);
+    width: 60%;
 }

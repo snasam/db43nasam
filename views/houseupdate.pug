@@ -3,6 +3,9 @@ extends layout
 block content
   h1= title
 
+  if (toShow == null)
+    h3 No instance to delete
+
   - let houseid = toShow._id
   - let housetype = toShow.type
   - let housecolour = toShow.colour

@@ -1,7 +1,10 @@
 extends layout
 
 block content
-  h1= title
+  h1(id="newtitle")= title
+
+  if (toShow == null)
+    h2 No instance to delete
 
   - let houseid = toShow._id
   - let housetype = toShow.type
@@ -11,13 +14,13 @@ block content
   div
     div.row
       div(class='costumeAttr mr-3') house ID is:
-      div #{houseid}
+      div(class='values specialstyles') #{houseid}
     div.row
       div(class='costumeAttr mr-3') house Type is:
-      div #{housetype}
+      div(class="values") #{housetype}
     div.row
       div(class='costumeAttr mr-3') house colour is:
-      div #{housecolour}
+      div(class="values") #{housecolour}
     div.row
       div(class='costumeAttr mr-3') house rent is:
-      div #{houserent}
+      div(class="values") #{houserent}
