@@ -38,7 +38,9 @@ router.get('/login', function(req, res) {
  res.render('login', { title: 'house App Login', user : req.user });
 });
 router.post('/login', passport.authenticate('local'), function(req, res) {
- res.redirect('/');
+  if(req.session.returnTo)
+  res.redirect(req.session.returnTo);
+  res.redirect('/');
 });
 router.get('/logout', function(req, res) {
  req.logout();
@@ -47,5 +49,7 @@ router.get('/logout', function(req, res) {
 router.get('/ping', function(req, res){
  res.status(200).send("pong!");
 });
+
+
 
 module.exports = router;
