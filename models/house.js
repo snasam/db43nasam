@@ -4,7 +4,11 @@ type: {
     type: String,
     required: [true, "house type is Required"]
 },
-colour: String,
+colour: {
+    type: String,
+    minimumLength: 10
+},
+
 rent: {
     type: Number,
 
