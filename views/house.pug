@@ -1,14 +1,20 @@
 extends layout
 
 block content
+ - let create = `dispatch(\"house/create\")`
+  button.btn(class="btn-success m1-1", onclick=create) Create
   h1= title
   - let house=results;
   div(class="container-fluid mt-3")
    div(class="row m-1")
     each form in house
      - let destination=`buy(\"/house/update?id=${form._id}\")`
+     - let detail=`buy(\"/house/detail?id=${form._id}\")`
+     - let del=`buy(\"/house/delete?id=${form._id}\")`
      div(class="col-sm-6 bg-warning m-1 p-3") House #{form.type} - #{form.colour} - #{form.rent}
       button.btn( class="btn-primary ml-2", onclick=destination ) Update
+      button.btn( class="btn-dark ml-2", onclick=detail ) Get Detail
+      button.btn( class="btn-danger ml-2", onclick=del ) Delete
   
    script.
     function buy(path){
