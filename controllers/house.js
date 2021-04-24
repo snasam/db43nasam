@@ -154,7 +154,3 @@ exports.house_delete_Page = async function(req, res) {
     }
 };
 
-
-
-
-    
